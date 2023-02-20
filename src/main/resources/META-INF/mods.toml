@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT License"
+issueTrackerURL="https://github.com/MCTeamPotato/Sync-Potato-Effect/issues"
+[[mods]]
+modId="spe"
+version="1.0"
+displayName="Sync Potato Effect"
+displayURL="https://github.com/MCTeamPotato/Sync-Potato-Effect"
+authors="Team Potato"
+description='''
+Just as the name says.
+'''
