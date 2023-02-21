@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class EventHandler {
     @SubscribeEvent
     public static void changeDimension(EntityTravelToDimensionEvent event) {
+        if (event.getEntity().world.isRemote) return;
         ResourceLocation dim = event.getDimension().getRegistryName();
         if (event.getEntity() instanceof PlayerEntity) event.getEntity().addTag("spe_" + dim.getNamespace() + "_" + dim.getPath());
     }
@@ -21,6 +22,7 @@ public class EventHandler {
     @SubscribeEvent
     public static void tick(TickEvent.PlayerTickEvent event) {
         PlayerEntity player = event.player;
+        if (player.world.isRemote) return;
         ResourceLocation dim = player.world.getDimensionKey().getRegistryName();
         if (player.removeTag("spe_" + dim.getNamespace() + "_" + dim.getPath())) {
             ArrayList<EffectInstance> effects = new ArrayList<>(player.getActivePotionEffects());
