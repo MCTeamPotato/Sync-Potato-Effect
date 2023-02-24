@@ -24,12 +24,11 @@ public class EventHandler {
         PlayerEntity player = event.player;
         if (player.world.isRemote) return;
         ResourceLocation dim = player.world.getDimensionKey().getRegistryName();
-        if (player.removeTag("spe_" + dim.getNamespace() + "_" + dim.getPath())) {
-            ArrayList<EffectInstance> effects = new ArrayList<>(player.getActivePotionEffects());
-            for (int i = effects.size() - 1; i >= 0; i --) {
-                player.removePotionEffect(effects.get(i).getPotion());
-                player.addPotionEffect(effects.get(i));
-            }
+        if (!player.removeTag("spe_" + dim.getNamespace() + "_" + dim.getPath())) return;
+        ArrayList<EffectInstance> effects = new ArrayList<>(player.getActivePotionEffects());
+        for (int i = effects.size() - 1; i >= 0; i --) {
+            player.removePotionEffect(effects.get(i).getPotion());
+            player.addPotionEffect(effects.get(i));
         }
     }
 }
