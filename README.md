@@ -1,1 +1,0 @@
-# Sync-Potato-Effect
